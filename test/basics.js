@@ -1,12 +1,8 @@
-// var filog = require('filter-log')
-// require('mocha')
-// var assert = require('chai').assert
-// let props = require('../test-lib/test-properties')
-
-// let Sink = require('../lib/file-sink-remote-http')
 const FileSinkServer = require('file-sink-server')
 const FileSink = require('file-sink')
 let props = require('../test-lib/test-properties')
+
+let Sink = require('../lib/file-sink-remote-http-axios')
 
 const addBasicCases = require('../test-lib/basic-test-cases')
 
@@ -37,7 +33,7 @@ describe("setup", function () {
 	})
 })
 
-addBasicCases(props)
+addBasicCases(props, Sink)
 
 describe("teardown", function () {
 

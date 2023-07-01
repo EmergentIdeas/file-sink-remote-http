@@ -3,10 +3,9 @@ let time = new Date().getTime()
 let msg = 'this is a test: ' + time
 require('mocha')
 const assert = require('chai').assert
-let Sink = require('../lib/file-sink-remote-http')
 
 
-function addBasicCases(props) {
+function addBasicCases(props, Sink) {
 	function getSink() {
 		return new Sink(`http://localhost:${props.port}${props.dataPath}`)
 	}
