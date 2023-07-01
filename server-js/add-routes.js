@@ -10,7 +10,6 @@ let log
 module.exports = function(app) {
 	log = filog('unknown')
 	
-	
 	let testDataSink = new FileSink(webhandle.sinks.project.path + '/test-data')
 	
 	let sinkRouter = express.Router()
@@ -18,8 +17,5 @@ module.exports = function(app) {
 	})
 	testDataServer.addToRouter(sinkRouter)
 	app.use('/test-data', sinkRouter)
-	
-
-
 }
 
