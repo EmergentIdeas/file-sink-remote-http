@@ -315,6 +315,144 @@ function addBasicCases(props, Sink) {
 			}
 		})
 
+		it("find all paths", function (done) {
+			let s = getSink()
+			try {
+				let promise = s.findPaths()
+				promise.then((data) => {
+					if (data.length == 5) {
+						done()
+					}
+					else {
+						done(new Error('the directory did not contain the right number of files'))
+					}
+				})
+			}
+			catch (error) {
+				return done(error)
+			}
+		})
+		it("find all data paths", function (done) {
+			let s = getSink()
+			try {
+				let promise = s.findPaths({
+					namePattern: 'data'
+				})
+				promise.then((data) => {
+					if (data.length == 2) {
+						done()
+					}
+					else {
+						done(new Error('the directory did not contain the right number of files'))
+					}
+				})
+			}
+			catch (error) {
+				return done(error)
+			}
+		})
+		it("find all data paths with real regexp", function (done) {
+			let s = getSink()
+			try {
+				let promise = s.findPaths({
+					namePattern: /data/
+				})
+				promise.then((data) => {
+					if (data.length == 2) {
+						done()
+					}
+					else {
+						done(new Error('the directory did not contain the right number of files'))
+					}
+				})
+			}
+			catch (error) {
+				return done(error)
+			}
+		})
+		it("find all data paths with real regexp (path)", function (done) {
+			let s = getSink()
+			try {
+				let promise = s.findPaths({
+					pathPattern: /data/
+				})
+				promise.then((data) => {
+					if (data.length == 2) {
+						done()
+					}
+					else {
+						done(new Error('the directory did not contain the right number of files'))
+					}
+				})
+			}
+			catch (error) {
+				return done(error)
+			}
+		})
+		it("find all data paths with function", function (done) {
+			let s = getSink()
+			try {
+				let promise = s.findPaths({
+					namePattern: function(name) {
+						return name.indexOf('data') > -1
+					}
+				})
+				promise.then((data) => {
+					if (data.length == 2) {
+						done()
+					}
+					else {
+						done(new Error('the directory did not contain the right number of files'))
+					}
+				})
+			}
+			catch (error) {
+				return done(error)
+			}
+		})
+		it("find all data paths with function", function (done) {
+			let s = getSink()
+			try {
+				let promise = s.findPaths({
+					namePattern: function(name) {
+						return name.indexOf('data') > -1
+					}
+					, pathPattern: async function(name) {
+						return name.indexOf('2') > -1
+					}
+				})
+				promise.then((data) => {
+					if (data.length == 1) {
+						done()
+					}
+					else {
+						done(new Error('the directory did not contain the right number of files'))
+					}
+				})
+			}
+			catch (error) {
+				return done(error)
+			}
+		})
+		it("find just directory paths", function (done) {
+			let s = getSink()
+			try {
+				let promise = s.findPaths({
+					file: false
+				})
+				promise.then((data) => {
+					if (data.length == 1) {
+						done()
+					}
+					else {
+						done(new Error('the directory did not contain the right number of files'))
+					}
+				})
+			}
+			catch (error) {
+				return done(error)
+			}
+		})
 		it("a directory delete", function (done) {
 			let s = getSink()
 			try {

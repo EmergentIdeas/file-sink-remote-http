@@ -1,6 +1,6 @@
 {
 	"name": "file-sink-remote-http",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "A file sink which accesses files via RESTful HTTP verbs",
 	"main": "lib/file-sink-remote-http-axios.js",
 	"browser": "lib/file-sink-remote-http-browser.js",
@@ -9,8 +9,9 @@
 		"less-build": "npx lessc --source-map --source-map-include-source less/pages.less public/css/pages.css",
 		"less-compress": "uglifycss public/css/pages.css > public/css/pages.min.css",
 		"client-js-compress": "uglifyjs public/js/pages.js -o public/js/pages.min.js -c --source-map url=public/js/pages.min.js.map",
-		"client-js-build": "npm run client-js-pages-build",
+		"client-js-build": "npm run client-js-pages-build; npm run client-js-tests-build",
 		"client-js-pages-build": "npx browserify client-js/pages.js --debug | npx exorcist public/js/pages.js.map > public/js/pages.js",
+		"client-js-tests-build": "npx browserify -p esmify client-js/tests.js --debug | npx exorcist public/js/tests.js.map > public/js/tests.js",
 		"dev-less-watch": "onchange 'less/**/*.less' -- npm run less-build",
 		"dev-client-js-watch": "onchange 'client-js/**/*.js' -- npm run client-js-build",
 		"dev-server-js-watch": "onchange 'server-js/**/*.js' -- pm2 restart $npm_package_name-web",
@@ -29,7 +30,7 @@
 		"esmify": "^2.1.1",
 		"exorcist": "^2.0.0",
 		"express": "^4.17.1",
-		"file-sink": "*",
+		"file-sink": "^1.0.12",
 		"filter-log": "0.0.5",
 		"input-value-injector": "^1.0.8",
 		"jsdoc": "^3.6.11",
@@ -38,6 +39,7 @@
 		"onchange": "^3.2.1",
 		"parallelshell": "3.0.1",
 		"uglify-js": "^3.6.0",
+		"file-sink-server": "^1.0.5",
 		"webhandle": "^1.0.26"
 	},
 	"browserify": {
@@ -49,10 +51,9 @@
 		"/lib"
 	],
 	"peerDependencies": {
-		"file-sink": "^1.0.8",
-		"file-sink-server": "^1.0.3"
 	},
 	"dependencies": {
+		"@webhandle/minimal-browser-event-emitter": "^1.0.1",
 		"axios": "^1.4.0"
 	}
 }
