@@ -1,6 +1,6 @@
 {
 	"name": "file-sink-remote-http",
-	"version": "1.0.1",
+	"version": "1.0.2",
 	"description": "A file sink which accesses files via RESTful HTTP verbs",
 	"main": "lib/file-sink-remote-http-axios.js",
 	"browser": "lib/file-sink-remote-http-browser.js",

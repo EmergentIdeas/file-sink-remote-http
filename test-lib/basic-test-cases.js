@@ -4,10 +4,10 @@ let msg = 'this is a test: ' + time
 require('mocha')
 const assert = require('chai').assert
 
-
 function addBasicCases(props, Sink) {
+	let sinkPath = `http://localhost:${props.port}${props.dataPath}`
 	function getSink() {
-		return new Sink(`http://localhost:${props.port}${props.dataPath}`)
+		return new Sink(sinkPath)
 	}
 	describe("basic tests", function () {
 
@@ -474,6 +474,14 @@ function addBasicCases(props, Sink) {
 			try {
 				let promise = s.getFullFileInfo('')
 				promise.then((data) => {
+					if(data.accessUrl != sinkPath) {
+						return done(new Error('access url not set'))
+					}
+					for(let child of data.children) {
+						if(child.accessUrl != sinkPath + '/' + child.name) {
+							return done(new Error('access url not set for children'))
+						}
+					}
 					if (data.children.length == 4) {
 						done()
 					}
