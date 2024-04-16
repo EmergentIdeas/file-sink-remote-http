@@ -1,6 +1,6 @@
 {
 	"name": "file-sink-remote-http",
-	"version": "1.0.2",
+	"version": "1.0.3",
 	"description": "A file sink which accesses files via RESTful HTTP verbs",
 	"main": "lib/file-sink-remote-http-axios.js",
 	"browser": "lib/file-sink-remote-http-browser.js",
@@ -31,7 +31,8 @@
 		"exorcist": "^2.0.0",
 		"express": "^4.17.1",
 		"file-sink": "^1.0.12",
-		"filter-log": "0.0.5",
+		"file-sink-server": "^1.0.5",
+		"filter-log": "^1.0.10",
 		"input-value-injector": "^1.0.8",
 		"jsdoc": "^3.6.11",
 		"less": "^3.10.3",
@@ -39,7 +40,6 @@
 		"onchange": "^3.2.1",
 		"parallelshell": "3.0.1",
 		"uglify-js": "^3.6.0",
-		"file-sink-server": "^1.0.5",
 		"webhandle": "^1.0.26"
 	},
 	"browserify": {
@@ -50,8 +50,6 @@
 	"files": [
 		"/lib"
 	],
-	"peerDependencies": {
-	},
 	"dependencies": {
 		"@webhandle/minimal-browser-event-emitter": "^1.0.1",
 		"axios": "^1.4.0"
