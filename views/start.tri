@@ -28,10 +28,9 @@
 	webpdetect()
 </script>
 
-<link href="/css/pages.css" rel="stylesheet">
 
 <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;500;600;800&display=swap" rel="stylesheet">
 
-
+__externalResourceManager.render()__
 </head>
 <body class="modern ready-to-load-img">

@@ -1,7 +1,0 @@
-let props = require('./test-properties')
-const mocha = require('mocha')
-mocha.setup('bdd')
-mocha.run()
-const addBasicCases = require('../test-lib/basic-test-cases')
-let Sink = require('../lib/file-sink-remote-http-browser')
-addBasicCases(props, Sink)

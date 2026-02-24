@@ -24,9 +24,28 @@ npm install file-sink-remote-http
 
 ## Usage
 
-Use the file sink methods to read and write data.
+On the server side:
+
+```js
+import fileSinkRemoteHttpSetup from "file-sink-remote-http/initialize-webhandle-component.mjs"
+let fileSinkRemoteHttpManager = await fileSinkRemoteHttpSetup(webhandle)
 
 ```
+
+On the client side:
+
+```js
+import {FileSinkRemoteHttp} from "file-sink-remote-http"
+let sink = new FileSinkRemoteHttp(`http://localhost:3000/test-data`)
+let msg = (await sink.read('data1.txt')).toString()
+
+```
+
+
+
+Use the file sink methods to read and write data.
+
+```js
 const Sink = require('file-sink-remote-http')
 let sink = new Sink(`http://localhost:3000/test-data`)
 

@@ -1,4 +1,9 @@
 __::start__
 <div class="page page-landing">
+	<ul>
+		<li>
+			<a href="/test">Test Page</a>
+		</li>
+	</ul>
 </div>
 __::end__
